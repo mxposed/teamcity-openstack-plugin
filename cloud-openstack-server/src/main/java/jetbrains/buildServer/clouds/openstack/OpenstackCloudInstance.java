@@ -27,6 +27,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class OpenstackCloudInstance implements CloudInstance {
     @NotNull private static final Logger LOG = Logger.getInstance(Loggers.CLOUD_CATEGORY_ROOT);
     @NotNull private final String instanceId;
+    @NotNull private final ServerPaths serverPaths;
     @NotNull private final OpenstackCloudImage cloudImage;
     @NotNull private final Date startDate;
     @NotNull private final ServerPaths serverPaths;
@@ -36,10 +37,10 @@ public class OpenstackCloudInstance implements CloudInstance {
 
     private final AtomicReference<InstanceStatus> status = new AtomicReference<InstanceStatus>(InstanceStatus.SCHEDULED_TO_START);
 
-    public OpenstackCloudInstance(@NotNull final OpenstackCloudImage image, @NotNull final String instanceId,
-                                  @NotNull ScheduledExecutorService executor, @NotNull ServerPaths serverPaths) {
+    public OpenstackCloudInstance(@NotNull final OpenstackCloudImage image, @NotNull final String instanceId, @NotNull ServerPaths serverPaths, @NotNull ScheduledExecutorService executor) {
         this.cloudImage = image;
         this.instanceId = instanceId;
+        this.serverPaths = serverPaths;
         this.startDate = new Date();
         this.executor = executor;
         this.serverPaths = serverPaths;
