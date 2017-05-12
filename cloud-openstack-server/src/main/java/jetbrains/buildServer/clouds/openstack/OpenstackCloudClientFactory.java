@@ -76,6 +76,6 @@ public class OpenstackCloudClientFactory implements CloudClientFactory {
             public ScheduledExecutorService createExecutorService(@NotNull final String duty) {
                 return Executors.newSingleThreadScheduledExecutor(new NamedDaemonThreadFactory("openstack-" + duty));
             }
-        });
+        }, serverPaths);
     }
 }

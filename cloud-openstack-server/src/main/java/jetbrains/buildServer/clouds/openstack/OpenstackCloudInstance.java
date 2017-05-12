@@ -30,6 +30,7 @@ public class OpenstackCloudInstance implements CloudInstance {
     @NotNull private final ServerPaths serverPaths;
     @NotNull private final OpenstackCloudImage cloudImage;
     @NotNull private final Date startDate;
+    @NotNull private final ServerPaths serverPaths;
     @Nullable private volatile CloudErrorInfo errorInfo;
     @Nullable private ServerCreated serverCreated;
     @NotNull private final ScheduledExecutorService executor;
@@ -42,6 +43,7 @@ public class OpenstackCloudInstance implements CloudInstance {
         this.serverPaths = serverPaths;
         this.startDate = new Date();
         this.executor = executor;
+        this.serverPaths = serverPaths;
         setStatus(InstanceStatus.SCHEDULED_TO_START);
     }
 

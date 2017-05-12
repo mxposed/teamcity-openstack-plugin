@@ -23,6 +23,7 @@ public class OpenstackCloudImage implements CloudImage {
     @Nullable private final String userScriptPath;
     @NotNull private final ServerPaths serverPaths;
     @NotNull private final ScheduledExecutorService executor;
+    @NotNull private final ServerPaths serverPaths;
 
     @NotNull private final Map<String, OpenstackCloudInstance> instances = new ConcurrentHashMap<String, OpenstackCloudInstance>();
     @NotNull private final IdGenerator instanceIdGenerator = new IdGenerator();
@@ -46,6 +47,7 @@ public class OpenstackCloudImage implements CloudImage {
         this.userScriptPath = userScriptPath;
         this.serverPaths = serverPaths;
         this.executor = executor;
+        this.serverPaths = serverPaths;
 
         this.errorInfo = null;  //FIXME: need to use this, really.
 
@@ -92,6 +94,16 @@ public class OpenstackCloudImage implements CloudImage {
     @NotNull
     public String getName() {
         return imageName;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Nullable
+    public Integer getAgentPoolId() {
+        return null;
     }
 
     @NotNull
